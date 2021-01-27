@@ -1,4 +1,5 @@
 {
+  //for a google extension you need a manifest.json, popup.html for the page, javascript for actions, css to style, and an icon
 //required
   "manifest_version": 2,
   "name": "IMSA Link Finder",
