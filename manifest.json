@@ -1,6 +1,6 @@
 {
 //required
-  "manifest_version": 2,
+  "manifest_version": 2, //hi
   "name": "IMSA Link Finder",
   "version": "1.0.0",
   
@@ -8,6 +8,7 @@
   "icons": { //the small button
     "128": "icon.jpg" //took a picture of IMSA's onion logo
   },
+  asdafdsa
   
   //it's what the small button can do
   "browser_action": {
