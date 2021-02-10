@@ -4,13 +4,11 @@
   "manifest_version": 2,
   "name": "IMSA Link Finder",
   "version": "1.0.0",
-  "manifest_version": 2,
   
   "description": "Accessible links for IMSA resources.",
   "icons": { //the small button
     "128": "icon.png"//took a picture of IMSA's onion logo
   },
-  asdafdsa
   
   //it's what the small button can do
   "browser_action": {
