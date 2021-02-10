@@ -1,21 +1,21 @@
 {
+//for a google extension you need a manifest.json, popup.html for the page, javascript for actions, css to style, and an icon
 //required
-  "manifest_version": 2, //hi
+  "manifest_version": 2,
   "name": "IMSA Link Finder",
   "version": "1.0.0",
+  "manifest_version": 2,
   
   "description": "Accessible links for IMSA resources.",
   "icons": { //the small button
-    "128": "icon.jpg" //took a picture of IMSA's onion logo
+    "128": "icon.png"//took a picture of IMSA's onion logo
   },
   asdafdsa
   
   //it's what the small button can do
   "browser_action": {
-    "default_title": "IMSA's resources", //the text when you hoover over the button
-    "default_popup": "popup.html",  //where it goes after you click on the button
+    "default_title": "IMSA's resources",//the text when you hoover over the button
+    "default_popup": "popup.html"//where it goes after you click on the button
   },
-   "permissions": ["activeTab", "declarativeContent", "storage"], //what the app can access, go to https://developer.chrome.com/docs/extensions/mv2/declare_permissions/ to see all the permessions you can do
+   "permissions": ["activeTab", "declarativeContent", "storage"]//what the app can access, go to https://developer.chrome.com/docs/extensions/mv2/declare_permissions/ to see all the permessions you can do
 }
-
-
