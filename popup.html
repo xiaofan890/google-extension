@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>  </title>
+    <title>Google Extension</title>
+    <style>/*Basic ids and classes for styling. Just a template for adding style*/
+      .wrapper {
+        background-color: white;
+        border:5px black solid;
+      }
+
+      #assignmentCalendar {
+        /* background-color: red; */
+        border-collapse: collapse;
+      }
+
+      .headers {
+        color: black;
+        border: 5px black solid;
+      }
+
+      .AssignmentCell {
+        color: black;
+      }
+      
+      .Remove {
+        color: red;
+      }
+      
+      .errorText {
+        background-color: red;
+      }
+
+
+      
+    </style>
 </head>
 <body>
-    <div class="modal-header">
-        <h1 class="logo">
-            <img src="icon.png" alt="IMSA resources" class="logo-icon"> IMSA resources <span class="version">(1.0.0)</span>
-        </h1>
+    <div class="wrapper">
+      <h2>Assignment Calendar</h2>
+      <table id="assignmentCalendar">
+      </table>
+      <p class="errorText" id="tableErrorText"></p>
+      <form id="form">
+        <fieldset>
+          <legend>Assignment Adder</legend>
+          <input type="text" name="assignmentName" placeholder="Assignment Name">
+          <!-- <br> -->
+          <input type="date" name="dueDate">
+          <!-- <br> -->
+          <input type="text" name="assignmentClass" placeholder="Class">
+          <!-- <br> -->
+          <input type="button" id="submitButton" name="submit" value="Add Assignment">
+          <!-- <br> -->
+          <input type="button" id="resetForm" name="resetForm" value="Reset Form">
+          <!-- <br> -->
+          <input type="button" id="resetCalendar" name="clearCalendar" value="Clear Calendar">
+        </fieldset>
+      </form>
+      <p class="errorText" id="formErrorText"></p>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
