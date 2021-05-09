@@ -1,5 +1,6 @@
 //Sets initial data if the user has not opened the extension before
 //Otherwise, loads saved data
+// chrome.storage.sync.clear();
 chrome.storage.sync.getBytesInUse("assignmentCalendar", function (result) {
     if (result == 0) {
         setInitialTable();
@@ -34,36 +35,20 @@ function setInitialTable() {
 function loadTable() {
     chrome.storage.sync.get(function (allData) {
         var data = allData.assignmentCalendar,
-            table = document.getElementById("assignmentCalendar");
-        table.innerHTML = "";
-        var firstRow = table.insertRow(),
-            cellNameList = ["Assignment Name", "Due Date", "Class", "Delete?"];
-        //Adds 4 cells to the row
-        for (k = 0; k < 4; k++) {
-            var tempCell = firstRow.insertCell(-1);
-            tempCell.innerHTML = cellNameList[k];
-            tempCell.setAttribute('class', "headers");
-        }
-        var numAssignments = data.numCurrentAssignments,
+            table = document.getElementById("assignmentCalendar"),
+            html = ''.concat(`<tr><th class="headers">Assignment Name</th><th class="headers">Due Date</th><th class="headers">Class</th><th class="headers">Delete?</th></tr>`),
+            numAssignments = data.numCurrentAssignments,
             currentAssignmentList = data.assignmentList,
             tableErrorText = document.getElementById("tableErrorText");
-        //Updates the table if there is at least 1 assignment saved
+        table.innerHTML = html;
         if (numAssignments > 0) {
             tableErrorText.innerHTML = "";
-            //Creates row for each assignment with it's data and a remove option
-            for (i = 0; i < numAssignments; i++) {
+            for (i = 0; i < numAssignments; i++){
                 var assignment = currentAssignmentList[i],
-                    tempRow = table.insertRow(-1),
-                    assignmentCellFill = [assignment.name, assignment.date, assignment.course, "REMOVE"],
-                    classList = ["AssignmentCell", "AssignmentCell", "AssignmentCell", "Remove"];
-                //Creates 4 cells and adds the data and remove option to those cells along with their classes
-                for (j = 0; j < 4; j++) {
-                    var tempCell = tempRow.insertCell(-1);
-                    tempCell.innerHTML = assignmentCellFill[j];
-                    tempCell.setAttribute('class', classList[j]);
-                }
+                    currentRow = ''.concat(`<tr><td class="AssignmentCell">${assignment.name}</td><td class="AssignmentCell">${assignment.date}</td><td class="AssignmentCell">${assignment.course}</td><td class="Remove"><button">REMOVE</button></td></tr>`)
+                html = html.concat(currentRow);
             }
-            //Adds ability for remove option to remove the assignment and row when clicked
+            table.innerHTML = html;
             for (var i = 1; i <= numAssignments; i++) {
                 table.rows[i].cells[3].onclick = function () {
                     index = this.parentElement.rowIndex;
@@ -86,22 +71,13 @@ function removeAssignment(index) {
         var data = allData.assignmentCalendar,
             numAssignments = data.numCurrentAssignments,
             tempAssignmentList = data.assignmentList,
-            nextAssignmentList = [],
-            assignment = tempAssignmentList[index - 1];
-        //Get's the assignment list after the current assignment is removed
-        for (i = 0; i < numAssignments; i++) {
-            //
-            if (i != index - 1) {
-                nextAssignmentList.push(assignment);
+            nextAssignmentList = [];
+        //Get's the assignment list after the current assignment is removed        
+        for (i = 0; i < numAssignments-1; i++) {
+            if (i != index) {
+                nextAssignmentList.push(tempAssignmentList[i]);
             }
         }
-
-        // allData.assignmentCalendar = {
-        //     numCurrentAssignments: numAssignments - 1,
-        //     numTotalAssignments: data.numTotalAssignments - 1,
-        //     assignmentList: nextAssignmentList
-        // };
-        //Updates the save data
         chrome.storage.sync.set({
             assignmentCalendar: {
                 numCurrentAssignments: numAssignments - 1,
