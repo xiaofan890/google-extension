@@ -3,31 +3,42 @@
 
 <head>
     <title>Google Extension</title>
+    <!-- Basic ids and classes for styling. Just a template for adding style -->
     <style>
-        /*Basic ids and classes for styling. Just a template for adding style*/
-        .wrapper {
+        /*Div Surrounding All Related to the Calendar*/
+        #container {
             background-color: white;
             border: 5px black solid;
         }
 
+        /* Table */
         #assignmentCalendar {
             /* background-color: red; */
             border-collapse: collapse;
         }
 
+        /* Top Row of Table */
         .headers {
             color: brown;
-            border: 5px black solid;
+            border: 1px solid black;
+            border-collapse: collapse;
         }
 
+        /* All Content Cells in Table */
         .AssignmentCell {
             color: yellow;
+            border: 1px solid black;
+            border-collapse: collapse;
         }
 
+        /* All Remove Buttons */
         .Remove {
             color: red;
+            border: 1px solid black;
+            border-collapse: collapse;
         }
 
+        /* Both Texts Used to Show Errors */
         .errorText {
             background-color: red;
         }
@@ -35,7 +46,7 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div id="container">
         <h2>Assignment Calendar</h2>
         <table id="assignmentCalendar">
         </table>
